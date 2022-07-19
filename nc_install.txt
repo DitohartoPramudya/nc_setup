@@ -51,7 +51,7 @@ sudo sed -i '/^memory_limit =/s/=.*/= 1024M/' /etc/php/7.4/apache2/php.ini
 sudo systemctl restart apache2
 
 5. Redis cache caching config
-sudo nano /etc/redis
+sudo nano /etc/redis/redis.conf
 port 6379 = port 0
 unixsocket /var/run/redis/redis.sock
 unixsocketperm 770
