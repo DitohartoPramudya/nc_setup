@@ -111,8 +111,9 @@ sudo systemctl restart apache2
 4. Install APCu and Redis
 sudo apt-fast install php-apcu redis-server php-redis php-zip php-dompdf php-xml php-mbstring php-gd php-curl unzip \
 php-intl php-bcmath php-gmp php-imagick libmagickcore-6.q16-6-extra -y
+sudo php -v
 sudo a2enmod rewrite headers env dir mime
-sudo sed -i '/^memory_limit =/s/=.*/= 1024M/' /etc/php/7.4/apache2/php.ini
+sudo sed -i '/^memory_limit =/s/=.*/= 1024M/' /etc/php/8.1/apache2/php.ini
 sudo systemctl restart apache2
 
 5. Redis cache caching config
@@ -152,6 +153,9 @@ ADD THE FOLLOWING:
 SAVE
 sudo reboot
 sudo systemctl enable redis-server
+cd var/www/html/
+sudo mv index.html index.html.bak
+systemctl reload apache2
 
 FINE TUNING NEXTCLOUD
 sudo nano /etc/php/7.3/apache2/php.ini
